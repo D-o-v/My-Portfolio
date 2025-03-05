@@ -1,9 +1,7 @@
  // app/resume/page.tsx
 
-import { DocumentArrowDownIcon } from '@heroicons/react/24/solid'
-import Link from 'next/link'
+
 import AnimatedBackground from '../components/AnimatedBackground'
-import { downloadPdf } from '@/utils/downloadPdf'
 import { PDFDownloadButton } from '../components/PDFDownloadButton'
 
 export default function ResumePage() {

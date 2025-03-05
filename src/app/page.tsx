@@ -57,7 +57,7 @@ export default function Home() {
     }, 3000)
 
     return () => clearInterval(interval)
-  }, [])
+  }, [skills.length])
 
   return (
     <div className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden">
