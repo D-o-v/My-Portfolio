@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   // metadataBase: new URL('https://odunayodauda.com'),
-  metadataBase: new URL('https://odunayodauda.netlify.app'),
+  metadataBase: new URL('https://odunayodauda.vercel.app'),
   title: {
     default: 'Odunayo Dauda - Software Developer Portfolio',
     template: '%s | Odunayo Dauda'
