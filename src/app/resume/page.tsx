@@ -257,7 +257,7 @@ export default function ResumePage() {
                     </a>
                     <br />
                     <a 
-                      href="https://github.com/odunayodauda" 
+                      href="https://github.com/D-o-v" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="hover:text-[#3498db] transition-colors"
