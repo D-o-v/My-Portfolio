@@ -1,101 +1,159 @@
-import Image from "next/image";
+// // // app/page.tsx
+
+'use client'
+
+import { useState, useEffect } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { 
+  FaCode, 
+  FaReact, 
+  FaNodeJs, 
+  FaDatabase, 
+  FaCloud, 
+  FaLaptopCode 
+} from 'react-icons/fa'
+import AnimatedBackground from './components/AnimatedBackground'
+import { downloadPdf } from '@/utils/downloadPdf'
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [activeSkill, setActiveSkill] = useState(0)
+  const skills = [
+    { 
+      icon: FaReact, 
+      name: 'React Development', 
+      description: 'Building dynamic, responsive web applications with modern JavaScript frameworks' 
+    },
+    { 
+      icon: FaNodeJs, 
+      name: 'Backend Solutions', 
+      description: 'Developing robust server-side applications with Node.js and .NET Core' 
+    },
+    { 
+      icon: FaDatabase, 
+      name: 'Database Design', 
+      description: 'Creating efficient database schemas and optimizing data management' 
+    },
+    { 
+      icon: FaCloud, 
+      name: 'Cloud Services', 
+      description: 'Implementing scalable cloud architectures and deployment strategies' 
+    },
+    { 
+      icon: FaCode, 
+      name: 'System Architecture', 
+      description: 'Designing intelligent, scalable software solutions' 
+    },
+    { 
+      icon: FaLaptopCode, 
+      name: 'DevOps', 
+      description: 'Streamlining development and deployment processes' 
+    }
+  ]
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveSkill((prev) => (prev + 1) % skills.length)
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  return (
+    <div className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden">
+      <AnimatedBackground/>
+
+      <div className="relative z-10 max-w-5xl mx-auto px-4 py-16 text-center">
+        <div className="mb-12 animate-fade-in-down">
+          <Image 
+            src="/asset/profile.png"
+            alt="Odunayo Dauda"
+            width={250} 
+            height={250} 
+            className="rounded-full mx-auto mb-6 shadow-2xl border-4 border-white transition-transform duration-500 hover:rotate-6"
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+
+        <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white drop-shadow-lg animate-slide-in-left">
+          Odunayo <span className="bg-gradient-to-r from-[#6a11cb] to-[#2575fc] bg-clip-text text-transparent">Dauda</span>
+        </h1>
+
+        <h2 className="text-2xl md:text-3xl mb-6 text-gray-300 animate-slide-in-right">
+          Software Developer | Full-Stack Engineer
+        </h2>
+
+        <p className="text-lg md:text-xl mb-8 text-gray-200 max-w-2xl mx-auto animate-fade-in">
+          Transforming complex challenges into elegant, efficient digital solutions 
+          through innovative software engineering and user-centric design.
+        </p>
+
+        <div className="flex justify-center space-x-4 mb-12 animate-bounce-in">
+        <button 
+          onClick={() => downloadPdf('ODUNAYO_DAUDA__CV.pdf', '/asset/ODUNAYO_DAUDA__CV.pdf')}
+          className="btn bg-gradient-to-r from-[#6a11cb] to-[#2575fc] text-white hover:from-[#2575fc] hover:to-[#6a11cb] flex items-center gap-2 shadow-lg transition-transform hover:scale-105"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          Download CV
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            className="h-5 w-5" 
+            viewBox="0 0 20 20" 
+            fill="currentColor"
+          >
+            <path 
+              fillRule="evenodd" 
+              d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-9.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" 
+              clipRule="evenodd" 
+            />
+          </svg>
+        </button>
+
+          <Link 
+            href="/projects" 
+            className="btn bg-white text-[#2c3e50] hover:bg-gray-100 flex items-center gap-2 shadow-lg transition-transform hover:scale-105"
+          >
+            View Projects
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              className="h-5 w-5 text-[#3498db]" 
+              viewBox="0 0 20 20" 
+              fill="currentColor"
+            >
+              <path 
+                fillRule="evenodd" 
+                d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z" 
+                clipRule="evenodd" 
+              />
+            </svg>
+          </Link>
+        </div>
+
+        {/* Skills Showcase */}
+        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 shadow-lg">
+          <h3 className="text-2xl font-bold mb-8 text-white">
+            Professional <span className="bg-gradient-to-r from-[#6a11cb] to-[#2575fc] bg-clip-text text-transparent">Skills</span>
+          </h3>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {skills.map((skill, index) => (
+              <div 
+                key={index}
+                className={`p-6 rounded-2xl transition-all duration-300 ${
+                  activeSkill === index 
+                    ? 'bg-gradient-to-r from-[#6a11cb] to-[#2575fc] text-white scale-105 shadow-2xl' 
+                    : 'bg-white/10 text-gray-300 hover:bg-white/20'
+                }`}
+                onClick={() => setActiveSkill(index)}
+              >
+                <skill.icon className={`mx-auto h-12 w-12 mb-4 ${
+                  activeSkill === index ? 'text-white' : 'text-[#3498db]'
+                }`} />
+                <h4 className="text-xl font-semibold mb-2">{skill.name}</h4>
+                <p className="text-sm">{skill.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
-  );
+  )
 }

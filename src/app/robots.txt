@@ -1,0 +1,15 @@
+# robots.txt for https://odunayodauda.com
+
+# Allow all crawlers full access
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://odunayodauda.com/sitemap.xml
+
+# Directories to potentially exclude
+Disallow: /private/
+Disallow: /admin/
+
+# Crawl-delay to be respectful to search engines
+Crawl-delay: 10
