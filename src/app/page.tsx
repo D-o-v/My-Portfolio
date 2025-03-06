@@ -90,7 +90,8 @@ export default function Home() {
         <div className="flex justify-center space-x-4 mb-12 animate-bounce-in">
         <button 
           onClick={() => downloadPdf('ODUNAYO_DAUDA__CV.pdf', '/asset/ODUNAYO_DAUDA__CV.pdf')}
-          className="btn bg-gradient-to-r from-[#6a11cb] to-[#2575fc] text-white hover:from-[#2575fc] hover:to-[#6a11cb] flex items-center gap-2 shadow-lg transition-transform hover:scale-105"
+          // className="hidden btn bg-gradient-to-r from-[#6a11cb] to-[#2575fc] text-white hover:from-[#2575fc] hover:to-[#6a11cb] flex items-center gap-2 shadow-lg transition-transform hover:scale-105"
+          className="hidden btn bg-gradient-to-r from-[#6a11cb] to-[#2575fc] text-white hover:from-[#2575fc] hover:to-[#6a11cb]  items-center gap-2 shadow-lg transition-transform hover:scale-105"
         >
           Download CV
           <svg 

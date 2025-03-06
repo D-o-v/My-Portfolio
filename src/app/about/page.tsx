@@ -138,7 +138,8 @@ export default function AboutPage() {
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 items-center justify-center">
             <button 
             onClick={() => downloadPdf('ODUNAYO_DAUDA__CV.pdf', '/asset/mycv.pdf')}
-              className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg hover:opacity-90 transition-all flex items-center justify-center gap-2"
+              // className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg hover:opacity-90 transition-all flex items-center justify-center gap-2"
+              className="hidden bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg hover:opacity-90 transition-all  items-center justify-center gap-2"
             >
               Download Resume
               <svg 

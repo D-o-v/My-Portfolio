@@ -16,7 +16,8 @@ export function PDFDownloadButton() {
   return (
     <button 
       onClick={handleDownload}
-      className="bg-gradient-to-r from-[#6a11cb] to-[#2575fc] text-white px-4 py-2 rounded-full flex items-center gap-2 hover:opacity-90 transition-opacity"
+      // className="bg-gradient-to-r from-[#6a11cb] to-[#2575fc] text-white px-4 py-2 rounded-full flex items-center gap-2 hover:opacity-90 transition-opacity"
+      className="hidden bg-gradient-to-r from-[#6a11cb] to-[#2575fc] text-white px-4 py-2 rounded-full  items-center gap-2 hover:opacity-90 transition-opacity"
     >
       <DocumentArrowDownIcon className="h-5 w-5" />
       Download PDF
